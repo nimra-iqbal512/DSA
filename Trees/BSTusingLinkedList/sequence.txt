@@ -1,0 +1,11 @@
+BSTinsertion.java
+
+DFStraversal.java
+
+BFStraversal.java
+
+MaxMin.java
+
+Search.java
+
+BSTdeletion.java
