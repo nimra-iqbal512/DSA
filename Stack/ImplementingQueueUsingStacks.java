@@ -132,12 +132,15 @@ class MyQueue {
     
     public int pop() {
         if(aux_s.isEmpty()){
-            while(!s.isEmpty()){
-                aux_s.push(s.pop());
+            if(!s.isEmpty()){
+                while(!s.isEmpty()){
+                    aux_s.push(s.pop());
+                }
+            }else{
+                throw new IllegalStateException("Underflow");
             }
         }
         return aux_s.pop();
-
         // TC = Amortized 0(1), 
 
         // Amortized O(1), Worst-case O(n). In the worst case scenario when stack s2 is empty, the algorithm pops n elements from stack s1 and pushes n elements to s2, where n is the queue size. This gives 2n operations, which is O(n). But when stack s2 is not empty the algorithm has O(1) time complexity
@@ -148,8 +151,12 @@ class MyQueue {
     
     public int peek() {
         if(aux_s.isEmpty()){
-            while(!s.isEmpty()){
-                aux_s.push(s.pop());
+            if(!s.isEmpty()){
+                while(!s.isEmpty()){
+                    aux_s.push(s.pop());
+                }
+            }else{
+                throw new IllegalStateException("Underflow");
             }
         }
         return aux_s.peek();
@@ -161,11 +168,11 @@ class MyQueue {
     
     public void display(){
         System.out.print("Queue:  ");
-        for(int i=0; i<s.size(); i++){
-            System.out.print(s.get(i) + " ");
-        }
         for(int i=aux_s.size()-1; i>=0; i--){
             System.out.print(aux_s.get(i) + " ");
+        }
+        for(int i=0; i<s.size(); i++){
+            System.out.print(s.get(i) + " ");
         }
         System.out.println();
         System.out.println();
